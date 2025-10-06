@@ -1,0 +1,71 @@
+Atividades:
+
+Lucas Maciel
+ - Elemento de Despesa          mat_produtos
+    php artisan make:model Patrimonio/ElementoDespesa
+    php artisan make:filament-resource Patrimonio/ElementoDespesa
+- Setores mat_setores
+    php artisan make:model Patrimonio/Setores
+    php artisan make:filament-resource Patrimonio/Setores
+- SituaçãoBem                   mat_situacaobem
+    php artisan make:model Patrimonio/SituacaoBem
+    php artisan make:filament-resource Patrimonio/SituacaoBem
+- Descrição Detalhada           mat_descricaodetalhada
+    php artisan make:model Patrimonio/DescricaoDetalhada
+    php artisan make:filament-resource Patrimonio/DescricaoDetalhada
+ - Nota Fiscal                  mat_estoque
+    php artisan make:model Almoxarido/Estoque
+    php artisan make:filament-resource Almoxarido/Estoque
+
+
+Lucas Cesar
+ - Centro de Custos         cad_centrocusto
+    php artisan make:model Patrimonio/CentroCusto
+    php artisan make:filament-resource Patrimonio/CentroCusto
+ - Unidade de Medida        mat_unidade
+    php artisan make:model Patrimonio/UnidadeMedida
+    php artisan make:filament-resource Patrimonio/UnidadeMedida
+ - Complemento Setor        mat_complementosetor
+    php artisan make:model Patrimonio/ComplementoSetor
+    php artisan make:filament-resource Patrimonio/ComplementoSetor
+ - Estoque                  mat_estoque
+    php artisan make:model Almoxarido/Estoque
+    php artisan make:filament-resource Almoxarido/Estoque
+
+Caua
+- Fornecedores              mat_fornecedores
+    php artisan make:model Patrimonio/Fornecedor
+    php artisan make:filament-resource Patrimonio/Fornecedor
+- Situação Nota Fiscal      alm_situacao_notafiscal
+    php artisan make:model Almoxaridade/SituacaoNotaFiscal
+    php artisan make:filament-resource Almoxaridade/SituacaoNotaFiscal
+- Tipo Movimentação         alm_tipo_movimentacao
+    php artisan make:model Almoxaridade/TipoMovimentacao
+    php artisan make:filament-resource Almoxaridade/TipoMovimentacao
+
+Enzo
+- Marcas                  mat_marcas
+    php artisan make:model Patrimonio/Marca
+    php artisan make:filament-resource Patrimonio/Marca
+- Modelos                  mat_modelos
+    php artisan make:model Patrimonio/Modelos
+    php artisan make:filament-resource Patrimonio/Modelos
+
+Jhon
+- Marcas                  mat_marcas
+    php artisan make:model Patrimonio/Marca
+    php artisan make:filament-resource Patrimonio/Marca
+- Modelos                  mat_modelos
+    php artisan make:model Patrimonio/Modelos
+    php artisan make:filament-resource Patrimonio/Modelos
+- Unidade de Medida     mat_unidade
+    php artisan make:model Patrimonio/UnidadeMedida
+    php artisan make:filament-resource Patrimonio/UnidadeMedida
+
+Fellipe
+- Conta Contábil          mat_planocontas
+    php artisan make:model Patrimonio/ContaContabil
+    php artisan make:filament-resource Patrimonio/ContaContabil
+- Descrição Resumida        mat_descricaoresumida
+    php artisan make:model Patrimonio/DescricaoResumida
+    php artisan make:filament-resource Patrimonio/DescricaoResumida

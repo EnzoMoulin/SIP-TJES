@@ -1,0 +1,90 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@config 'tailwind.config.js';
+
+.fi-topbar,
+.fi-topbar nav,
+.fi-sidebar-header {
+    background-color: #0C0A3A !important;
+    color: #ffffff !important;
+}
+
+#filament-panels-user-menu-panel,
+#filament-panels-user-menu-panel * {
+    color: #111827 !important;
+}
+
+.fi-topbar nav .ms-auto {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    width: 100% !important;
+}
+
+.fi-topbar nav .ms-auto .fi-global-search-wrapper {
+    width: 100% !important;
+    max-width: 420px !important;
+    flex-shrink: 1 !important;
+}
+
+.fi-topbar nav .ms-auto .fi-user-slot {
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+.fi-global-search-wrapper .fi-input-wrapper {
+    position: relative !important;
+}
+
+.fi-global-search-wrapper .fi-input-wrapper input {
+    padding-right: 2.5rem !important;
+    padding-left: 1rem !important;
+    color: #111827 !important;
+    background-color: #ffffff !important;
+    height: 2.5rem !important;
+    border-radius: 0.5rem !important;
+}
+
+.fi-global-search-wrapper .fi-input-wrapper svg {
+    display: block !important;
+    position: absolute !important;
+    right: 0.75rem !important;
+    left: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    height: 1.25rem;
+    width: 1.25rem;
+    color: #9ca3af;
+}
+
+.fi-user-menu .fi-dropdown-panel {
+    right: 0 !important;
+    left: auto !important;
+}
+
+.floating-help-container {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    z-index: 50;
+}
+
+.help-menu {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 1rem;
+    width: 250px;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border: 1px solid #e5e7eb;
+    display: block; 
+}
+
+.fi-logo {
+    margin-top: 0px;
+    width: auto !important; 
+}

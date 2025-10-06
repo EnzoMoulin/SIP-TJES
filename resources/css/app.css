@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fi-sidebar-header {
+    min-height: 6rem;
+    display: flex;
+    align-items: center;
+}
+
+#filament-panels-user-menu-panel,
+#filament-panels-user-menu-panel * {
+    color: #000000 !important;
+    fill: currentColor !important;
+    stroke: currentColor !important;
+}
+
+#filament-panels-user-menu-panel .fi-dropdown-list-item-label,
+#filament-panels-user-menu-panel .fi-dropdown-list a,
+#filament-panels-user-menu-panel .fi-dropdown-list button {
+    color: #000000 !important;
+}
