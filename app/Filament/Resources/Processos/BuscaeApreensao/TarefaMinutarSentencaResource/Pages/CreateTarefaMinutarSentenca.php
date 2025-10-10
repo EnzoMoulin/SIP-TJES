@@ -12,6 +12,7 @@ class CreateTarefaMinutarSentenca extends FluxoPage
     protected static string $resource = TarefaMinutarSentencaResource::class;
     protected static string $view = 'filament.resources.processos.buscaeapreensao.tarefa-minutar-sentenca.create';
     protected static ?string $title = 'Tarefa - Minutar Sentença';
+    
     public $selectedOption = null;
 
     protected function getFluxoQuery(): Builder
@@ -31,6 +32,4 @@ class CreateTarefaMinutarSentenca extends FluxoPage
         parent::goBack();
         $this->selectedOption = null;
     }
-
-    
 }

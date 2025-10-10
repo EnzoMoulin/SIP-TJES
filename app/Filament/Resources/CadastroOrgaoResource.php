@@ -15,10 +15,12 @@ class CadastroOrgaoResource extends Resource
     protected static ?string $model = CadastroOrgao::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
-    protected static ?int $navigationSort = 1;
-    protected static ?string $navigationGroup = 'Cadastro';
+    protected static ?string $navigationGroup = 'Cadastros Variados';
     protected static ?string $modelLabel = 'Cadastro de Órgão';
     protected static ?string $pluralModelLabel = 'Cadastro de Órgãos';
+    protected static ?string $navigationLabel = 'Cadastro de Órgãos';
+    protected static ?string $title = 'Cadastro de Órgãos';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {

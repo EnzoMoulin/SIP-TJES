@@ -16,16 +16,6 @@ class MinutarDespachoResource extends Resource
     protected static ?string $pluralModelLabel = 'Minutar Despacho';
     protected static ?string $modelLabel = 'Minutar Despacho';
 
-    public static function form(Forms\Form $form): Forms\Form
-    {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('pergunta')
-                    ->label('Pergunta')
-                    ->required(),
-            ]);
-    }
-
     public static function getRelations(): array
     {
         return [];

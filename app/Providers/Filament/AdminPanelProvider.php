@@ -38,7 +38,8 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->brandLogo(asset('images/tjes22222.png'))
-            ->brandLogoHeight('4rem')
+            ->brandLogoHeight('4.5rem')
+
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
             ->globalSearch(CustomGlobalSearch::class)
@@ -62,7 +63,7 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make('Classe: Busca e Apreensão'),
                 NavigationGroup::make('Etiqueta: Impugnação à Penhora'),
                 NavigationGroup::make('Extra: Atos Dinâmicos'),
-                NavigationGroup::make('Cadastro'),
+                NavigationGroup::make('Cadastros Variados'),
             ])
             ->navigationItems([
 

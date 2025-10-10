@@ -6,20 +6,12 @@ use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\ProcessoController;
 use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\HelpController;
+use App\Http\Controllers\QrSignerController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
-
-// Rota para exibir um Modelo pelo seu SLUG (nome amigável na URL)
 Route::get('/modelos/{slug}', [ModeloController::class, 'showBySlug'])->name('modelo.show');
 
-// Rota para o relatório de processo específico
 Route::get('/relatorio/processo/{processo}', [RelatorioController::class, 'relatorioDeProcesso'])
     ->name('relatorio.processo_especifico');
-
 
 Route::prefix('processos')->name('processos.')->group(function () {
     Route::get('/', [ProcessoController::class, 'index'])->name('index');
@@ -45,15 +37,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::get('/documentacao', [HelpController::class, 'documentation'])->name('help.documentation');
 Route::get('/suporte', [HelpController::class, 'support'])->name('help.support');
-
-// START: ADD THESE THREE NEW ROUTES
 Route::get('/faq', [HelpController::class, 'faq'])->name('help.faq');
 Route::get('/chamado', [HelpController::class, 'ticket'])->name('help.ticket');
 Route::get('/melhoria', [HelpController::class, 'suggestion'])->name('help.suggestion');
-// END: ADD THESE THREE NEW ROUTES
+
+Route::post('/qr/generate', [QrSignerController::class, 'generate']);
+Route::get('/qr/verify', [QrSignerController::class, 'verify']);
+
+Route::get('/e-docs/verify/{identifier}', [ModeloController::class, 'showBySlug'])
+    ->where('identifier', '^[A-Za-z0-9._-]+$')
+    ->name('edocs.verify');
 
 require __DIR__.'/auth.php';
-

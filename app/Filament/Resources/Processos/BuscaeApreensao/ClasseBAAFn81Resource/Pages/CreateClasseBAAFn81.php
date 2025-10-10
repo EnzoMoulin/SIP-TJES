@@ -13,7 +13,6 @@ class CreateClasseBAAFn81 extends FluxoPage
     protected static string $view = 'filament.resources.processos.buscaeapreensao.classe-baaf-n81.create';
     protected static ?string $title = 'Classe - BAAF (n°81)';
     
-
     public $selectedOption = null;
 
     protected function getFluxoQuery(): Builder

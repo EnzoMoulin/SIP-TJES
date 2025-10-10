@@ -1,14 +1,18 @@
 <x-filament-panels::page>
 
     <style>
-        
-        .base-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); transition: all 0.15s ease-in-out; cursor: pointer; min-width: 160px; background-clip: padding-box; line-height: 1; }
+        :root { --bottom-panel-height: 750px; }
+
+        /* ---------- Buttons & core styles ---------- */
+        .base-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); transition: all 0.15s ease-in-out; cursor: pointer; min-width: 160px; background-clip: padding-box; line-height: 1; height: 48px; /* <-- FIX ADDED HERE */ }
         .base-btn:hover { transform: translateY(-2px); }
         .base-btn:focus { outline: none; box-shadow: 0 0 0 4px rgba(0,123,255,0.18); }
+
         .btn-primary { background: linear-gradient(90deg,#0056b3,#007BFF); color: #fff; border: none; box-shadow: 0 8px 20px rgba(0,123,255,0.22); }
         .btn-secondary { background: linear-gradient(90deg,#b45309,#f59e0b); color: #fff; border: none; box-shadow: 0 8px 20px rgba(180,80,20,0.22); }
         .btn-ghost { background-color: #fff; color: #374151; border: 1px solid #e5e7eb; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.04); }
         .btn-ghost:hover { background-color: #f9fafb; color: #1f2937; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+
         .finalize-btn { display: inline-grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: center; padding: 0.55rem 1rem; font-size: 0.95rem; min-width: 160px; max-width: 260px; border-radius: 0.75rem; background: linear-gradient(90deg,#f59e0b,#f97316); color: #fff; border: 0; box-shadow: 0 8px 20px rgba(245,158,11,0.18); cursor: pointer; background-clip: padding-box; line-height: 1.05; }
         .finalize-btn:focus { outline: none; box-shadow: 0 0 0 4px rgba(245,158,11,0.12); }
         .finalize-btn:hover { transform: translateY(-2px); }
@@ -25,67 +29,154 @@
         .option-group > button.option-group-btn-inactive, .option-group > .option-group-btn-inactive { background-color: #fff !important; color: #374151 !important; border: 1px solid #e6e6e6; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
         .option-group > button.option-group-btn-inactive:hover { background-color: #f8fafc !important; transform: translateY(-2px); }
         .option-group > button.option-group-btn-active, .option-group > .option-group-btn-active { background: linear-gradient(90deg,#f59e0b,#f97316) !important; color: #fff !important; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 8px 18px rgba(245,158,11,0.18); transform: translateY(-2px); }
-        .option-group svg { stroke: currentColor; fill: none; }
+        .option-group svg { stroke: currentColor; fill: none; width: 20px; height: 20px; }
+
+        /* icon colors */
         .icon-sim { color: #16a34a; }
         .icon-nao { color: #dc2626; }
+        .icon-voltar { color: #dc2626; } /* seta vermelha */
 
-        .form-card { width: 100%; max-width: 920px; position: relative; border-radius: 1.25rem; overflow: visible; box-shadow: 0 18px 40px rgba(2,6,23,0.45); }
-        .form-card-inner { background-color: #0C0A39; color: #fff; border-radius: 1.25rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 11rem 2rem 1.5rem; box-sizing: border-box; position: relative; }
+        /* Voltar button — texto neutro, ícone vermelho */
+        .option-group > button.btn-voltar {
+            border-radius: 0.75rem !important;
+            background-color: #fff !important;
+            color: #374151 !important;
+            border: 1px solid #e6e6e6 !important;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            transition: all 0.12s ease-in-out;
+            height: 48px; /* <-- FIX ADDED HERE */
+        }
+        .option-group > button.btn-voltar:hover {
+            background-color: #f8fafc !important;
+            color: #1f2937 !important;
+            transform: translateY(-2px);
+        }
+
+        /* ---------- Cards & layout ---------- */
+        .form-card { width: 100%; max-width: 920px; position: relative; border-radius: 1.25rem; overflow: visible; margin: 0 auto; box-shadow: 0 18px 40px rgba(2,6,23,0.45); }
+        .form-card-inner { background-color: #0C0A39; color: #fff; border-radius: 1.25rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 11rem 2rem 1.5rem; position: relative; box-sizing: border-box; }
         .form-card-logo { position: absolute; top: 1.25rem; right: 1.25rem; z-index: 20; pointer-events: none; }
         .form-card-logo img { height: 48px; width: auto; display: block; }
 
-        .summary-wrapper { position: absolute; bottom: 2rem; left: calc(var(--fi-sidebar-width, 20rem) + 2rem); z-index: 50; width: min(380px, 88%); max-width: 420px; transition: transform .22s ease, opacity .22s ease; backdrop-filter: blur(6px); }
-        .summary-panel { background: rgba(255,255,255,0.92); border-radius: 0.9rem; box-shadow: 0 18px 40px rgba(2,6,23,0.12); border: 1px solid rgba(15,23,42,0.06); padding: 1rem; overflow: hidden; }
-        .summary-header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.65rem; }
-        .summary-title { display: flex; gap: 0.5rem; align-items: baseline; }
-        .summary-title h3 { margin: 0; font-size: 1.05rem; font-weight: 700; color: #0f172a; }
-        .summary-count { font-size: .85rem; color: #475569; background: rgba(15,23,42,0.04); padding: .2rem .5rem; border-radius: 999px; font-weight: 600; }
-        .summary-controls { display: flex; gap: .45rem; align-items: center; }
-        .summary-toggle { background: transparent; border: 0; padding: .35rem; border-radius: .5rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background .12s ease, transform .12s ease; }
-        .summary-toggle:hover { background: rgba(2,6,23,0.04); transform: translateY(-2px); }
-        .summary-list { max-height: 42vh; overflow-y: auto; padding-right: .25rem; }
-        .summary-list ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .6rem; }
-        .summary-item { display: flex; gap: .6rem; align-items: flex-start; padding: .55rem; border-radius: .6rem; transition: background .12s ease, transform .08s ease; }
-        .summary-item:hover { background: rgba(2,6,23,0.02); transform: translateY(-2px); }
-        .summary-item .q { flex: 1 1 auto; color: #0f172a; font-weight: 600; font-size: .95rem; line-height: 1.15; }
-        .summary-item .a { flex: 0 0 auto; align-self: center; font-size: .82rem; font-weight: 700; padding: .28rem .5rem; border-radius: 999px; text-transform: uppercase; width: 3.5rem; min-width: 3.5rem; text-align: center; }
+        .completion-card {
+            width: min(1100px, 94%);
+            background-color: #f3f4f6;
+            padding: 2.5rem 3rem;
+            border-radius: 1.75rem;
+            box-shadow: 0 28px 60px rgba(2,6,23,0.28);
+            border: 1px solid rgba(245,158,11,0.12);
+            text-align: center;
+            margin: auto 0;
+        }
+        .completion-card h2 { font-size: 2rem; font-weight: 800; color: #1f2937; margin-bottom: 0.25rem; }
+        .completion-card p { color: #4b5563; margin-top: 0.5rem; }
+
+        /* ---------- Page container centered (form centered vertically excluding bottom panel) ---------- */
+        html, body { height: 100%; margin: 0; padding: 0; overflow: auto; }
+        .fi-layout-panel { height: 100% !important; display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: center !important; overflow-y: auto !important; padding: 0 !important; margin: 0 !important; }
+
+        .page-container {
+            width: 100%;
+            min-height: calc(100vh - var(--bottom-panel-height));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* center vertically in remaining space */
+            padding: 1rem;
+            box-sizing: border-box;
+            position: relative;
+            gap: 1.25rem;
+        }
+        .form-card, .completion-card { margin-top: 0; margin-bottom: 0; }
+        
+        /* ---------- Bottom panel (fixo e centralizado) ---------- */
+        .bottom-panel {
+            position: fixed;
+            left: 55%;
+            transform: translateX(-50%);
+            bottom: 1.5rem;
+            z-index: 60;
+            width: calc(100% - 4rem);
+            max-width: 1400px;
+            pointer-events: none; /* avoid capturing clicks outside cards */
+        }
+        .bottom-panel .inner {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+            justify-content: space-between;
+            pointer-events: auto; /* enable clicks inside the inner */
+        }
+
+        /* cards dentro do painel */
+        .bottom-panel .card {
+            background: rgba(255,255,255,0.96);
+            border-radius: 1rem;
+            padding: 0.85rem;
+            box-shadow: 0 18px 40px rgba(2,6,23,0.08);
+            border: 1px solid rgba(15,23,42,0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* largura: resumo mais estreito, info maior, competência médio */
+        .bottom-panel .card.summary { width: 360px; max-width: 38%; }
+        .bottom-panel .card.info { flex: 1 1 520px; min-width: 300px; }
+        .bottom-panel .card.competence { width: 260px; }
+
+        /* Summary styling */
+        .summary .summary-header { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; margin-bottom:0.5rem; }
+        .summary .summary-title h3 { margin:0; font-size:1.05rem; font-weight:700; color:#0f172a; }
+        .summary .summary-count { font-size:0.85rem; color:#475569; background: rgba(15,23,42,0.04); padding:0.2rem 0.5rem; border-radius:999px; font-weight:600; }
+
+        .summary .summary-list { max-height: 30vh; overflow-y:auto; padding-right:0.25rem; }
+        .summary .summary-list ol { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+        .summary .summary-item { display:flex; gap:0.6rem; align-items:flex-start; padding:0.55rem; border-radius:0.6rem; transition:background .12s ease, transform .08s ease; }
+        .summary .summary-item:hover { background: rgba(2,6,23,0.02); transform: translateY(-2px); }
+        .summary .summary-item .q { flex:1 1 auto; color:#0f172a; font-weight:600; font-size:0.95rem; line-height:1.15; }
+        .summary .summary-item .a { flex:0 0 auto; align-self:center; font-size:0.9rem; font-weight:700; padding:0.28rem 0.5rem; border-radius:999px; text-transform:uppercase; width:3.5rem; text-align:center; }
         .pill-sim { background: #ecfdf5; color: #065f46; }
         .pill-nao { background: #fff1f2; color: #991b1b; }
         .pill-otro { background: #eef2ff; color: #3730a3; }
-        .summary-list::-webkit-scrollbar { width: 8px; }
-        .summary-list::-webkit-scrollbar-track { background: transparent; }
-        .summary-list::-webkit-scrollbar-thumb { background: rgba(15,23,42,0.08); border-radius: 999px; }
 
-        html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
-        .fi-layout-panel { height: 100% !important; display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: center !important; overflow-y: auto !important; padding: 0 !important; margin: 0 !important; }
-        .page-container { width: 100%; flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 1rem; box-sizing: border-box; position: unset; top: unset; left: unset; transform: unset; }
-        .form-card, .completion-card { margin-top: auto; margin-bottom: auto; }
-
-        .option-group button {
+        /* Info card inner grid nicer look */
+        .info-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+        }
+        .info-field {
+            background: linear-gradient(180deg,#fff,#fbfbfd);
+            border-radius: 0.75rem;
+            padding: 0.65rem 0.75rem;
             display: flex;
+            gap: 0.6rem;
             align-items: center;
-            justify-content: center;
-            min-width: 100px;
-            height: 42px;
+            border: 1px solid rgba(15,23,42,0.04);
         }
+        .info-field .label { font-size: 0.78rem; color: #475569; font-weight:700; }
+        .info-field .value { font-weight:700; color:#0f172a; font-size:0.95rem; }
 
-        .option-group svg {
-            width: 20px;
-            height: 20px;
+        /* competence card */
+        .competence .label { font-size: 0.85rem; color: #475569; font-weight:700; margin-bottom: 0.35rem; display:flex; gap:0.5rem; align-items:center; }
+        .competence select { width:100%; padding:0.5rem 0.75rem; border-radius:0.6rem; border:1px solid rgba(15,23,42,0.06); background:#fff; font-weight:700; }
+
+        /* responsive: empilha em mobile */
+        @media (max-width: 920px) {
+            .bottom-panel { left: 1rem; right: 1rem; transform: none; width: calc(100% - 2rem); }
+            .bottom-panel .inner { flex-direction: column-reverse; gap: 0.6rem; align-items: stretch; }
+            .bottom-panel .card.summary, .bottom-panel .card.info, .bottom-panel .card.competence { width: 100%; }
+            .info-row { grid-template-columns: 1fr; }
         }
-
-        @media (max-width: 920px) { .summary-wrapper { left: 1rem; right: 1rem; width: auto; max-width: calc(100% - 2rem); bottom: 1rem; } .summary-panel { padding: .75rem; } .summary-list { max-height: 34vh; } }
-        @media (max-width: 480px) { .summary-wrapper { bottom: .75rem; left: .5rem; right: .5rem; } .summary-panel { padding: .6rem; border-radius: .75rem; } .summary-title h3 { font-size: 1rem; } .summary-item .q { font-size: .9rem; } }
-
     </style>
 
+    {{-- O restante do seu código HTML permanece exatamente o mesmo --}}
     <div x-data="{ selectedOption: @entangle('selectedOption') }"
          x-on:open-modelo.window="window.open($event.detail.url, '_blank')"
          class="page-container">
 
-        {{-- =======================
-            COMPLETION CARD
-        ======================= --}}
+        {{-- CASO CONCLUÍDO --}}
         @if ($isComplete)
             <div class="completion-card" x-transition.opacity.scale.duration.400ms>
                 <div class="pt-6 flex flex-col items-center justify-center">
@@ -104,16 +195,18 @@
                 </div>
             </div>
 
+        {{-- CASO PASSO FINAL --}}
         @elseif ($isFinalStep)
             <div class="max-w-3xl ml-6 md:ml-12 p-8 bg-gray-100 rounded-3xl shadow-2xl border border-amber-50"
                  x-transition.opacity.duration.300ms>
                 {{-- summary --}}
             </div>
 
+        {{-- FLUXO NORMAL --}}
         @else
             @if ($currentId && isset($fluxos[$currentId]))
                 @php($currentStep = $fluxos[$currentId])
-                <div class="form-card">
+                <div class="form-card mx-auto" role="main" aria-live="polite">
                     <div class="form-card-inner">
                         <div class="form-card-logo">
                             <img alt="TJES logo" src="{{ url('/images/logo.png') }}">
@@ -179,7 +272,12 @@
 
                                     @if(count($history) > 0)
                                         <div role="group" class="option-group">
-                                            <button type="button" wire:click="goBack" class="option-group-btn option-group-btn-inactive voltar-btn">← Voltar</button>
+                                            <button type="button" wire:click="goBack" class="option-group-btn btn-voltar" aria-label="Voltar">
+                                                <svg class="icon-voltar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                                </svg>
+                                                <span>Voltar</span>
+                                            </button>
                                         </div>
                                     @endif
                                 </div>
@@ -196,17 +294,17 @@
             @endif
         @endif
 
-        {{-- =======================
-            SUMMARY WRAPPER
-        ======================= --}}
-        @if (!empty($history) && count($history) > 0)
-            <div x-data="{ openSummary: true }" class="summary-wrapper" x-cloak>
-                <div class="summary-panel">
+        {{-- BOTTOM PANEL: reúne Resumo | Info | Selecionar Competência (fixo e centralizado) --}}
+        @unless ($isComplete)
+        <div class="bottom-panel" aria-hidden="false">
+            <div class="inner">
+                <div class="card summary" x-data="{ openSummary: true }">
                     <div class="summary-header">
                         <div class="summary-title">
                             <h3>Resumo das Respostas</h3>
-                            <span class="summary-count">{{ count($history) }}</span>
+                            <span class="summary-count">{{ count($history ?? []) }}</span>
                         </div>
+
                         <div class="summary-controls">
                             <button type="button" class="summary-toggle" x-bind:title="openSummary ? 'Recolher' : 'Expandir'" @click="openSummary = !openSummary">
                                 <svg x-show="!openSummary" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -222,36 +320,165 @@
                     <div class="summary-list" x-show="openSummary" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-160" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-2">
                         <ol>
                             <?php
-                                foreach ($history as $questionId) {
-                                    if (!isset($fluxos[$questionId]) || !isset($responses[$questionId])) continue;
+                                if (!empty($history) && is_array($history)) {
+                                    foreach ($history as $questionId) {
+                                        if (!isset($fluxos[$questionId]) || !isset($responses[$questionId])) {
+                                            continue;
+                                        }
 
-                                    $responseRaw = $responses[$questionId];
-                                    $answerLower = function_exists('mb_strtolower') ? mb_strtolower($responseRaw, 'UTF-8') : strtolower($responseRaw);
+                                        $responseRaw = $responses[$questionId];
+                                        $answerLower = function_exists('mb_strtolower') ? mb_strtolower($responseRaw, 'UTF-8') : strtolower($responseRaw);
 
-                                    if (in_array($answerLower, ['nao', 'não'], true)) {
-                                        $normalizedResponse = 'NÃO';
-                                        $pillClass = 'pill-nao';
-                                    } elseif ($answerLower === 'sim') {
-                                        $normalizedResponse = 'SIM';
-                                        $pillClass = 'pill-sim';
-                                    } else {
-                                        $normalizedResponse = function_exists('mb_strtoupper') ? mb_strtoupper($responseRaw, 'UTF-8') : strtoupper($responseRaw);
-                                        $pillClass = 'pill-otro';
+                                        if (in_array($answerLower, ['nao', 'não'], true)) {
+                                            $normalizedResponse = 'NÃO';
+                                            $pillClass = 'pill-nao';
+                                        } elseif ($answerLower === 'sim') {
+                                            $normalizedResponse = 'SIM';
+                                            $pillClass = 'pill-sim';
+                                        } else {
+                                            $normalizedResponse = function_exists('mb_strtoupper') ? mb_strtoupper($responseRaw, 'UTF-8') : strtoupper($responseRaw);
+                                            $pillClass = 'pill-otro';
+                                        }
+
+                                        $pergunta = isset($fluxos[$questionId]['pergunta']) ? $fluxos[$questionId]['pergunta'] : '';
+                                        ?>
+                                        <li class="summary-item">
+                                            <div class="q"><?php echo e($pergunta); ?></div>
+                                            <div class="a <?php echo $pillClass; ?>"><?php echo e($normalizedResponse); ?></div>
+                                        </li>
+                                        <?php
                                     }
-
-                                    $pergunta = $fluxos[$questionId]['pergunta'] ?? '';
+                                } else {
+                                    echo '<div class="text-sm text-gray-500">Nenhuma resposta ainda.</div>';
+                                }
                             ?>
-                            <li class="summary-item">
-                                <div class="q"><?php echo e($pergunta); ?></div>
-                                <div class="a <?php echo $pillClass; ?>"><?php echo e($normalizedResponse); ?></div>
-                            </li>
-                            <?php } ?>
                         </ol>
                     </div>
                 </div>
+
+                <div class="card info" role="region" aria-label="Informações do processo">
+                    <div class="info-row">
+                        <div class="info-field" title="Data">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                            </svg>
+                            <div>
+                                <div class="label">Data</div>
+                                <div class="value">{{ now()->format('d/m/Y') }}</div>
+                            </div>
+                        </div>
+
+                        <div class="info-field" title="Hora">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <div>
+                                <div class="label">Hora</div>
+                                <div class="value">{{ now()->format('H:i') }}</div>
+                            </div>
+                        </div>
+
+                        <div class="info-field" title="Tarefa">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                                <path d="M3 7h18"></path>
+                                <path d="M3 12h18"></path>
+                                <path d="M3 17h18"></path>
+                            </svg>
+                            <div>
+                                <div class="label">Tarefa</div>
+                                <div class="value">{{ $this->getHeading() }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="height:8px;"></div>
+
+                    <div class="info-row">
+                        <div class="info-field" title="Nº do Processo">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                                <path d="M12 1v22"></path>
+                                <circle cx="12" cy="8" r="4"></circle>
+                            </svg>
+                            <div>
+                                <div class="label">Nº do Processo</div>
+                                <div class="value">00000000000000000000</div>
+                            </div>
+                        </div>
+
+                        <div class="info-field" title="Competência">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                                <path d="M10 21v-6"></path>
+                                <path d="M14 21v-6"></path>
+                                <path d="M3 7h18"></path>
+                            </svg>
+                            <div>
+                                <div class="label">Competência</div>
+                                <div class="value">{{ ucfirst($competencia ?? 'Cível') }}</div>
+                            </div>
+                        </div>
+
+                        <div class="info-field" title="Usuário">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <div>
+                                <div class="label">Usuário</div>
+                                <div class="value">{{ auth()->user()->name ?? 'Usuário' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card competence">
+                    <div class="label">
+                        <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+                            <path d="M3 7h18"></path>
+                            <path d="M3 12h18"></path>
+                            <path d="M3 17h18"></path>
+                        </svg>
+                        Selecionar Competência
+                    </div>
+
+                    <select wire:model="competencia" aria-label="Selecionar competência">
+                        <option value="cível" {{ (strtolower($competencia ?? '')=='cível' || strtolower($competencia ?? '')=='civel') ? 'selected' : '' }}>Cível</option>
+                        <option value="criminal" {{ (strtolower($competencia ?? '')=='criminal') ? 'selected' : '' }}>Criminal</option>
+                    </select>
+
+                    <div style="height:6px;"></div>
+                    <div class="text-xs text-gray-500">Altere a competência quando necessário — a seleção será aplicada ao processo.</div>
+                </div>
             </div>
-        @endif
+        </div>
+        @endunless
 
     </div>
+
+    <script>
+        // Atualiza hora a cada minuto — procura o campo "Hora" de forma segura
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateHora() {
+                let valueEl = null;
+                const bottomPanel = document.querySelector('.bottom-panel');
+                if (bottomPanel) {
+                    valueEl = bottomPanel.querySelector('.info-field[title="Hora"] .value');
+                }
+                if (!valueEl) {
+                    valueEl = document.querySelector('.info-field[title="Hora"] .value');
+                }
+                if (valueEl) {
+                    const now = new Date();
+                    const hh = String(now.getHours()).padStart(2,'0');
+                    const mm = String(now.getMinutes()).padStart(2,'0');
+                    valueEl.textContent = `${hh}:${mm}`;
+                }
+            }
+            updateHora(); // inicial
+            setInterval(updateHora, 60000);
+        });
+    </script>
 
 </x-filament-panels::page>

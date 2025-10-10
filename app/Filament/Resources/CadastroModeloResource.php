@@ -24,7 +24,7 @@ class CadastroModeloResource extends Resource
     protected static ?string $modelLabel = 'Cadastro de Modelos';
     protected static ?string $pluralModelLabel = 'Cadastro de Modelos';
     protected static ?string $title = 'Cadastro de Modelos';
-    protected static ?string $navigationGroup = 'Cadastro';
+    protected static ?string $navigationGroup = 'Cadastros Variados';
 
     // Garante que o rótulo de navegação usa o valor desejado.
     public static function getNavigationLabel(): string

@@ -25,7 +25,7 @@ class CadastroProcessoResource extends Resource
     protected static ?string $modelLabel = 'Cadastro de Processos';
     protected static ?string $pluralModelLabel = 'Cadastro de Processos';
     protected static ?string $title = 'Cadastro de Processos';
-    protected static ?string $navigationGroup = 'Cadastro';
+    protected static ?string $navigationGroup = 'Cadastros Variados';
 
     public static function form(Form $form): Form
     {

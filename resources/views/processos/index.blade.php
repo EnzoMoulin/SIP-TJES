@@ -50,6 +50,8 @@
     @endif
 </div>
 
+
+
 <script>
 document.getElementById('search-go').addEventListener('click', function () {
     const q = document.getElementById('search-q').value || '';
@@ -62,4 +64,6 @@ document.getElementById('search-q').addEventListener('keydown', function (e) {
     if (e.key === 'Enter') document.getElementById('search-go').click();
 });
 </script>
+
+
 @endsection

@@ -15,13 +15,12 @@ class CreateSISBAJUD extends FluxoPage
     
     protected static ?string $title = 'Impugnação à Penhora - SISBAJUD';
 
+    public $selectedOption = null;
+    
     protected function getFluxoQuery(): Builder
     {
         return Fluxo::query()->whereBetween('id', [27, 35]);
     }
-
-    public $selectedOption = null;
-
   
     public function selectOption(string $option): void
     {
@@ -35,5 +34,4 @@ class CreateSISBAJUD extends FluxoPage
         parent::goBack();
         $this->selectedOption = null;
     }
-
 }
