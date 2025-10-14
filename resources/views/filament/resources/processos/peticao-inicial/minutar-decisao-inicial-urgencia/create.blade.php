@@ -21,7 +21,7 @@
     min-width: 160px;
     background-clip: padding-box;
     line-height: 1;
-    height: 48px; /* <-- CORREÇÃO APLICADA AQUI */
+    height: 48px; /* Altura fixa para todos os botões */
 }
 .base-btn:hover { transform: translateY(-2px); }
 .base-btn:focus { outline: none; box-shadow: 0 0 0 4px rgba(0,123,255,0.18); }
@@ -67,7 +67,7 @@
     cursor: pointer;
     background-clip: padding-box;
     line-height: 1.05;
-    height: 48px; /* <-- CORREÇÃO APLICADA AQUI */
+    height: 48px; /* Altura fixa para todos os botões */
 }
 .finalize-btn:focus { outline: none; box-shadow: 0 0 0 4px rgba(245,158,11,0.12); }
 .finalize-btn:hover { transform: translateY(-2px); }
@@ -114,7 +114,7 @@
     border-radius: 0;
     cursor: pointer;
     line-height: 1;
-    height: 48px; /* <-- CORREÇÃO APLICADA AQUI */
+    height: 48px; /* Altura fixa para todos os botões */
 }
 .option-group > button + button { box-shadow: inset 1px 0 0 rgba(0,0,0,0.04); }
 .option-group > button:first-child { border-radius: 0.75rem 0 0 0.75rem; }
@@ -324,6 +324,54 @@ html, body {
     .bottom-panel .card.summary, .bottom-panel .card.info, .bottom-panel .card.competence { width: 100%; }
     .info-row { grid-template-columns: 1fr; }
 }
+
+/***** START: CSS PARA O PAINEL DE HOVER *****/
+.info-wrapper {
+    position: relative; /* Contexto para o painel de hover */
+}
+.info-hover-panel {
+    position: absolute;
+    bottom: 100%; /* Posiciona acima do card principal */
+    left: 0;
+    width: 100%;
+    margin-bottom: 12px; /* Espaço entre o painel e a seta */
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 0.85rem; /* Mesmo padding do card principal */
+    box-shadow: 0 20px 45px -10px rgba(2,6,23,0.2);
+    border: 1px solid rgba(15,23,42,0.08);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.2s ease-out;
+    z-index: 70;
+    transform: translateY(10px); /* Começa um pouco abaixo */
+    display: flex; /* Adicionado para espaçamento */
+    flex-direction: column; /* Adicionado para espaçamento */
+    gap: 0.6rem; /* Adicionado para espaçamento */
+}
+/* Estilo para a seta */
+.info-hover-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; /* Metade da altura da seta para sobrepor a borda */
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-right: 1px solid rgba(15,23,42,0.08);
+    border-bottom: 1px solid rgba(15,23,42,0.08);
+}
+/* Animação de aparição no hover */
+.info-wrapper:hover .info-hover-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+/***** END: CSS PARA O PAINEL DE HOVER *****/
+
 </style>
 
 <div x-data="{ selectedOption: @entangle('selectedOption') }"
@@ -547,7 +595,60 @@ html, body {
                 </div>
             </div>
 
-            <div class="card info" role="region" aria-label="Informações do processo">
+            <div class="info-wrapper card info" role="region" aria-label="Informações do processo">
+
+                {{-- START: PAINEL DE HOVER (escondido por padrão) --}}
+                <div class="info-hover-panel">
+                    <div class="info-row">
+                        <div class="info-field">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M12 2v20"></path><path d="M17 7l-5 5-5-5"></path></svg>
+                            <div>
+                                <div class="label">Dias Estacionado</div>
+                                <div class="value">...</div>
+                            </div>
+                        </div>
+                        <div class="info-field">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+                            <div>
+                                <div class="label">Data Inicial</div>
+                                <div class="value">...</div>
+                            </div>
+                        </div>
+                        <div class="info-field">
+                             <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            <div>
+                                <div class="label">Data de Conclusão</div>
+                                <div class="value">...</div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="info-row">
+                        <div class="info-field">
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            <div>
+                                <div class="label">Advogados</div>
+                                <div class="value">...</div>
+                            </div>
+                        </div>
+                        <div class="info-field">
+                           <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            <div>
+                                <div class="label">Nome da Parte</div>
+                                <div class="value">...</div>
+                            </div>
+                        </div>
+                        <div class="info-field">
+                           <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M10 21v-6"></path><path d="M14 21v-6"></path><path d="M3 7h18"></path></svg>
+                            <div>
+                                <div class="label">Competência</div>
+                                <div class="value">...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- END: PAINEL DE HOVER --}}
+
+                {{-- Conteúdo original do card de info --}}
                 <div class="info-row">
                     <div class="info-field" title="Data">
                         <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
