@@ -43,10 +43,13 @@ abstract class FluxoPage extends Page implements HasActions
         $this->currentId = count($keys) ? (int) $keys[0] : null;
     }
 
-    // ... (O RESTO DOS MÉTODOS selectOption, prepareSummary, etc. CONTINUAM EXATAMENTE IGUAIS)
+
     public function selectOption(string $option): void
     {
         if ($this->currentId === null) return;
+        
+        $currentIdBefore = $this->currentId; // Guarda o ID atual para checagem
+        
         $this->responses[$this->currentId] = $option;
         $nextIdRaw = $this->fluxos[$this->currentId][strtolower($option)] ?? null;
         $nextId = $nextIdRaw !== null ? (int)$nextIdRaw : null;
@@ -57,6 +60,12 @@ abstract class FluxoPage extends Page implements HasActions
         } else {
             $this->finalFluxoId = $this->currentId;
             $this->prepareSummary();
+        }
+        
+        if ($this->currentId !== $currentIdBefore || isset($this->finalFluxoId)) {
+            // DISPARA OS DOIS EVENTOS: refresh (para Livewire) e reset-selection (para Alpine)
+            $this->dispatch('refreshComponent');
+            $this->dispatch('reset-selection'); // <<< NOVO DISPATCH AQUI
         }
     }
 

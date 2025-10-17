@@ -4,22 +4,46 @@
         :root { --bottom-panel-height: 750px; }
 
         /* ---------- Buttons & core styles ---------- */
-        .base-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); transition: all 0.15s ease-in-out; cursor: pointer; min-width: 160px; background-clip: padding-box; line-height: 1; height: 48px; /* <-- FIX ADDED HERE */ }
+        .base-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); transition: all 0.15s ease-in-out; cursor: pointer; min-width: 160px; background-clip: padding-box; line-height: 1; height: 48px; }
         .base-btn:hover { transform: translateY(-2px); }
         .base-btn:focus { outline: none; box-shadow: 0 0 0 4px rgba(0,123,255,0.18); }
+
+        .btn-same-size {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-width: 120px;
+            height: 48px;
+            padding: 0 1.25rem !important;
+            box-sizing: border-box;
+            line-height: 1;
+        }
 
         .btn-primary { background: linear-gradient(90deg,#0056b3,#007BFF); color: #fff; border: none; box-shadow: 0 8px 20px rgba(0,123,255,0.22); }
         .btn-secondary { background: linear-gradient(90deg,#b45309,#f59e0b); color: #fff; border: none; box-shadow: 0 8px 20px rgba(180,80,20,0.22); }
         .btn-ghost { background-color: #fff; color: #374151; border: 1px solid #e5e7eb; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.04); }
         .btn-ghost:hover { background-color: #f9fafb; color: #1f2937; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
 
-        .finalize-btn { display: inline-grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: center; padding: 0.55rem 1rem; font-size: 0.95rem; min-width: 160px; max-width: 260px; border-radius: 0.75rem; background: linear-gradient(90deg,#f59e0b,#f97316); color: #fff; border: 0; box-shadow: 0 8px 20px rgba(245,158,11,0.18); cursor: pointer; background-clip: padding-box; line-height: 1.05; }
+        .finalize-btn { display: inline-grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: center; padding: 0.5rem 1rem; font-size: 0.95rem; height: 55px; min-width: 160px; max-width: 260px; border-radius: 0.75rem; background: linear-gradient(90deg,#f59e0b,#f97316); color: #fff; border: 0; box-shadow: 0 8px 20px rgba(245,158,11,0.18); cursor: pointer; background-clip: padding-box; line-height: 1.05; }
+
+        .finalize-btn svg.finalize-btn-icon,
+        .finalize-btn .finalize-btn-icon {
+            width: 2.2rem !important;
+            height: 2.2rem !important;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            stroke-width: 2 !important;
+        }
+
         .finalize-btn:focus { outline: none; box-shadow: 0 0 0 4px rgba(245,158,11,0.12); }
         .finalize-btn:hover { transform: translateY(-2px); }
         .finalize-btn .finalize-btn-icon { width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center; }
-        .finalize-btn .finalize-text { text-align: left; display: block; white-space: normal; }
-        .finalize-btn .finalize-text .small { display: block; font-weight: 500; font-size: 0.95rem; opacity: 0.92; line-height: 1.05; }
-        .finalize-btn .finalize-text .muted { display: block; font-weight: 750; font-size: 0.95rem; opacity: 0.92; line-height: 1.05; }
+        .finalize-btn .finalize-text { text-align: left; display: block; white-space: normal; height: 40px; }
+        .finalize-btn .finalize-text .small { display: block; font-weight: 500; font-size: 1rem; opacity: 0.92; line-height: 1.05; margin-top: 1.25px; margin-bottom: 2.5px; }
+        .finalize-btn .finalize-text .muted { display: block; font-weight: 750; font-size: 1rem; opacity: 0.92; line-height: 1.05; }
 
         .option-group { display: inline-flex; border-radius: 0.75rem; overflow: visible; align-items: stretch; }
         .option-group > button, .option-group-btn { padding: 0.75rem 1.25rem; font-size: 1rem; font-weight: 600; transition: all 0.12s ease-in-out; min-width: 96px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border: 0; border-radius: 0; cursor: pointer; line-height: 1; }
@@ -31,10 +55,24 @@
         .option-group > button.option-group-btn-active, .option-group > .option-group-btn-active { background: linear-gradient(90deg,#f59e0b,#f97316) !important; color: #fff !important; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 8px 18px rgba(245,158,11,0.18); transform: translateY(-2px); }
         .option-group svg { stroke: currentColor; fill: none; width: 20px; height: 20px; }
 
-        /* icon colors */
         .icon-sim { color: #16a34a; }
         .icon-nao { color: #dc2626; }
-        .icon-voltar { color: #dc2626; } /* seta vermelha */
+        .icon-voltar { color: #dc2626; }
+
+        .icon-voltar {
+            color: #dc2626;
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            stroke-width: 2.5 !important;
+        }
+
+        .option-group-btn.btn-voltar svg.icon-voltar { 
+            vertical-align: middle;
+        }
 
         /* Voltar button — texto neutro, ícone vermelho */
         .option-group > button.btn-voltar {
@@ -44,12 +82,17 @@
             border: 1px solid #e6e6e6 !important;
             box-shadow: 0 1px 2px rgba(0,0,0,0.04);
             transition: all 0.12s ease-in-out;
-            height: 48px; /* <-- FIX ADDED HERE */
+            height: 48px;
         }
         .option-group > button.btn-voltar:hover {
             background-color: #f8fafc !important;
             color: #1f2937 !important;
             transform: translateY(-2px);
+        }
+
+        .btn-primary, .btn-aux {
+            margin-top: 5px;
+            margin-bottom: -25px;
         }
 
         /* ---------- Cards & layout ---------- */
@@ -127,6 +170,7 @@
 
         /* Summary styling */
         .summary .summary-header { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; margin-bottom:0.5rem; }
+        .summary .summary-title { display: flex; align-items: center; gap: 0.5rem; }
         .summary .summary-title h3 { margin:0; font-size:1.05rem; font-weight:700; color:#0f172a; }
         .summary .summary-count { font-size:0.85rem; color:#475569; background: rgba(15,23,42,0.04); padding:0.2rem 0.5rem; border-radius:999px; font-weight:600; }
 
@@ -169,14 +213,102 @@
             .bottom-panel .card.summary, .bottom-panel .card.info, .bottom-panel .card.competence { width: 100%; }
             .info-row { grid-template-columns: 1fr; }
         }
+
+        /***** START: CSS PARA O PAINEL DE HOVER (ADICIONADO) *****/
+        .info-wrapper {
+            position: relative;
+        }
+        .info-hover-panel {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            width: 100%;
+            margin-bottom: 12px;
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 0.85rem;
+            box-shadow: 0 20px 45px -10px rgba(2,6,23,0.2);
+            border: 1px solid rgba(15,23,42,0.08);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.2s ease-out;
+            z-index: 70;
+            transform: translateY(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .info-hover-panel::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-right: 1px solid rgba(15,23,42,0.08);
+            border-bottom: 1px solid rgba(15,23,42,0.08);
+        }
+        .info-wrapper:hover .info-hover-panel {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        /***** END: CSS PARA O PAINEL DE HOVER *****/
+
+        /* ---------- BOTTOM-PANEL +1px FONT PATCH (SCOPED) ---------- */
+        /* Only affects elements inside the bottom-panel. Keeps rem scaling and adds exact +1px. */
+        .bottom-panel .info-field .label {
+            font-size: calc(0.78rem + 1px);
+        }
+
+        .bottom-panel .info-field .value {
+            font-size: calc(0.95rem + 1px);
+        }
+
+        /* override inline svg width/height attributes for the info icons */
+        .bottom-panel .info-field .info-icon,
+        .bottom-panel .info-field svg.info-icon {
+            width: 19px !important;   /* 18 -> 19 (+1) */
+            height: 19px !important;
+        }
+
+        /* Summary panel (title, counter, items) */
+        .bottom-panel .summary .summary-title h3 {
+            font-size: calc(1.05rem + 1px);
+        }
+
+        .bottom-panel .summary .summary-count {
+            font-size: calc(0.85rem + 1px);
+        }
+
+        .bottom-panel .summary .summary-item .q {
+            font-size: calc(0.95rem + 1px);
+        }
+
+        .bottom-panel .summary .summary-item .a {
+            font-size: calc(0.9rem + 1px);
+        }
+
+        /* competence card label & select text */
+        .bottom-panel .competence .label {
+            font-size: calc(0.85rem + 1px);
+        }
+        .bottom-panel .competence select {
+            font-size: calc(0.95rem + 1px);
+        }
+
+        /* End of scoped patch */
+
     </style>
 
-    {{-- O restante do seu código HTML permanece exatamente o mesmo --}}
     <div x-data="{ selectedOption: @entangle('selectedOption') }"
          x-on:open-modelo.window="window.open($event.detail.url, '_blank')"
          class="page-container">
 
-        {{-- CASO CONCLUÍDO --}}
         @if ($isComplete)
             <div class="completion-card" x-transition.opacity.scale.duration.400ms>
                 <div class="pt-6 flex flex-col items-center justify-center">
@@ -186,23 +318,21 @@
                     <h2>Processo Concluído!</h2>
                     <p>O fluxo foi finalizado e o modelo do documento foi gerado com sucesso.</p>
                     <div class="mt-6 flex flex-col sm:flex-row gap-4 pb-6 justify-center">
-                        <a href="{{ route('filament.admin.resources.processos.peticao-inicial.minutar-decisao-inicial-urgencias.create', ['statusprocesso_id' => $statusProcessoAtual ?? 2]) }}"
+                        <a href="{{ route('filament.admin.resources.processos.impugnacao-penhora.s-i-s-b-a-j-u-ds.create', ['statusprocesso_id' => $statusProcessoAtual ?? 2]) }}"
                            class="base-btn btn-primary">
                             Iniciar Novo Fluxo
                         </a>
-                        <a href="{{ url('/admin') }}" class="base-btn btn-secondary">Voltar para o Dashboard</a>
+                        <a href="{{ url('/admin') }}" class="base-btn btn-secondary btn-aux">Voltar para o Dashboard</a>
                     </div>
                 </div>
             </div>
 
-        {{-- CASO PASSO FINAL --}}
         @elseif ($isFinalStep)
             <div class="max-w-3xl ml-6 md:ml-12 p-8 bg-gray-100 rounded-3xl shadow-2xl border border-amber-50"
                  x-transition.opacity.duration.300ms>
                 {{-- summary --}}
             </div>
 
-        {{-- FLUXO NORMAL --}}
         @else
             @if ($currentId && isset($fluxos[$currentId]))
                 @php($currentStep = $fluxos[$currentId])
@@ -257,7 +387,7 @@
                                     @endif
 
                                     @if (!isset($currentStep['sim']) && !isset($currentStep['nao']) && isset($currentStep['modelo']))
-                                        <button type="button" wire:click="finalizeAndOpenModelo({{ $currentId }})" class="finalize-btn">
+                                        <button type="button" wire:click="finalizeAndOpenModelo({{ $currentId }})" class="finalize-btn btn-secondary">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="finalize-btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                             </svg>
@@ -267,12 +397,12 @@
                                             </span>
                                         </button>
                                     @elseif (!isset($currentStep['sim']) && !isset($currentStep['nao']) && !isset($currentStep['modelo']))
-                                        <button type="button" wire:click="finalizeOnly()" class="base-btn btn-secondary">Finalizar e Concluir</button>
+                                        <button type="button" wire:click="finalizeOnly()" class="base-btn btn-secondary ">Finalizar e Concluir</button>
                                     @endif
 
                                     @if(count($history) > 0)
                                         <div role="group" class="option-group">
-                                            <button type="button" wire:click="goBack" class="option-group-btn btn-voltar" aria-label="Voltar">
+                                            <button type="button" wire:click="goBack" class="option-group-btn btn-same-size btn-voltar" aria-label="Voltar">
                                                 <svg class="icon-voltar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
                                                 </svg>
@@ -294,9 +424,46 @@
             @endif
         @endif
 
-        {{-- BOTTOM PANEL: reúne Resumo | Info | Selecionar Competência (fixo e centralizado) --}}
+        {{-- BOTTOM-PANEL --}}
         @unless ($isComplete)
-        <div class="bottom-panel" aria-hidden="false">
+        
+        {{-- =================================================================== --}}
+        {{-- START OF CHANGES: Added Alpine.js logic directly to this element --}}
+        {{-- =================================================================== --}}
+        <div class="bottom-panel"
+             aria-hidden="false"
+             x-data="{
+                currentTime: '--:--',
+                sessionTime: '00:00:00',
+
+                init() {
+                    const startTime = new Date();
+
+                    const updateCurrentTime = () => {
+                        const now = new Date();
+                        this.currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+                    };
+
+                    const updateElapsedTime = () => {
+                        const now = new Date();
+                        const totalSeconds = Math.floor((now - startTime) / 1000);
+                        const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+                        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+                        const seconds = String(totalSeconds % 60).padStart(2, '0');
+                        this.sessionTime = `${hours}:${minutes}:${seconds}`;
+                    };
+                    
+                    updateCurrentTime();
+                    updateElapsedTime();
+
+                    setInterval(updateCurrentTime, 30000);
+                    setInterval(updateElapsedTime, 1000);
+                }
+             }"
+             x-init="init()">
+        {{-- =================================================================== --}}
+        {{-- END OF CHANGES --}}
+        {{-- =================================================================== --}}
             <div class="inner">
                 <div class="card summary" x-data="{ openSummary: true }">
                     <div class="summary-header">
@@ -356,7 +523,30 @@
                     </div>
                 </div>
 
-                <div class="card info" role="region" aria-label="Informações do processo">
+                <div class="info-wrapper card info" role="region" aria-label="Informações do processo">
+                    {{-- START: PAINEL DE HOVER --}}
+                    <div class="info-hover-panel">
+                        <div class="info-row">
+                            <div class="info-field"><svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M12 2v20"></path><path d="M17 7l-5 5-5-5"></path></svg><div><div class="label">Dias Estacionado</div><div class="value">...</div></div></div>
+                            <div class="info-field"><svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg><div><div class="label">Data Inicial</div><div class="value">...</div></div></div>
+                            <div class="info-field"><svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><div><div class="label">Data de Conclusão</div><div class="value">...</div></div></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-field"><svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg><div><div class="label">Advogados</div><div class="value">...</div></div></div>
+                            <div class="info-field"><svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><div><div class="label">Nome da Parte</div><div class="value">...</div></div></div>
+                            
+                            {{-- MODIFIED BLOCK FOR TIMER --}}
+                            <div class="info-field">
+                                <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <div>
+                                    <div class="label">Tempo de Sessão</div>
+                                    <div class="value" x-text="sessionTime">00:00:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- END: PAINEL DE HOVER --}}
+
                     <div class="info-row">
                         <div class="info-field" title="Data">
                             <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
@@ -377,7 +567,7 @@
                             </svg>
                             <div>
                                 <div class="label">Hora</div>
-                                <div class="value">{{ now()->format('H:i') }}</div>
+                                <div class="value" x-text="currentTime">{{ now()->format('H:i') }}</div>
                             </div>
                         </div>
 
@@ -388,7 +578,7 @@
                                 <path d="M3 17h18"></path>
                             </svg>
                             <div>
-                                <div class="label">Tarefa</div>
+                                <div class="label">Etiqueta: Impugnação à Penhora</div>
                                 <div class="value">{{ $this->getHeading() }}</div>
                             </div>
                         </div>
@@ -454,31 +644,6 @@
             </div>
         </div>
         @endunless
-
     </div>
-
-    <script>
-        // Atualiza hora a cada minuto — procura o campo "Hora" de forma segura
-        document.addEventListener('DOMContentLoaded', function() {
-            function updateHora() {
-                let valueEl = null;
-                const bottomPanel = document.querySelector('.bottom-panel');
-                if (bottomPanel) {
-                    valueEl = bottomPanel.querySelector('.info-field[title="Hora"] .value');
-                }
-                if (!valueEl) {
-                    valueEl = document.querySelector('.info-field[title="Hora"] .value');
-                }
-                if (valueEl) {
-                    const now = new Date();
-                    const hh = String(now.getHours()).padStart(2,'0');
-                    const mm = String(now.getMinutes()).padStart(2,'0');
-                    valueEl.textContent = `${hh}:${mm}`;
-                }
-            }
-            updateHora(); // inicial
-            setInterval(updateHora, 60000);
-        });
-    </script>
 
 </x-filament-panels::page>

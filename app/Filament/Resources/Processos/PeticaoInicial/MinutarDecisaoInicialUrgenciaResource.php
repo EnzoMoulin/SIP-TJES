@@ -31,6 +31,6 @@ class MinutarDecisaoInicialUrgenciaResource extends Resource
 
     public static function getNavigationUrl(): string
     {
-        return route('filament.admin.resources.processos.peticao-inicial.minutar-decisao-inicial-urgencias.create');
+        return static::getUrl('create');
     }
 }

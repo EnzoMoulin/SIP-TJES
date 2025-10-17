@@ -32,6 +32,6 @@ class MinutarDespachoResource extends Resource
 
     public static function getNavigationUrl(): string
     {
-        return route('filament.admin.resources.processos.peticao-inicial.minutar-despachos.create');
+        return static::getUrl('create');
     }
 }

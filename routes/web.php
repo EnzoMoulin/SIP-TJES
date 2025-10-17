@@ -8,6 +8,13 @@ use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\QrSignerController;
 
+Route::get('/admin/processos/peticao-inicial/minutar-despacho/create', function () {
+    return redirect()->route(
+        'filament.admin.resources.processos.peticao-inicial.minutar-despachos.create',
+        request()->query()
+    );
+})->name('filament.admin.resources.processos.peticao-inicial.minutar-despacho.create');
+
 Route::get('/modelos/{slug}', [ModeloController::class, 'showBySlug'])->name('modelo.show');
 
 Route::get('/relatorio/processo/{processo}', [RelatorioController::class, 'relatorioDeProcesso'])
