@@ -134,7 +134,7 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
             justify-content: center;
         }
 
-        /* Aumenta especificamente os ícones dos botões "Abrir Modelo" e "Finalizar e Abrir Modelo" */
+        /* Aumenta especificamente os ícones dos botões "Assinar Modelo" e "Finalizar e Assinar Modelo" */
         .finalize-btn svg,
         .finalize-btn .finalize-btn-icon,
         .base-btn .icon-doc {
@@ -494,16 +494,16 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                                         
                                         {{-- Estrutura de botões de Opção --}}
                                         @if ($isModeloPessoaStep)
-                                            {{-- Cenário 1: Abrir Modelo, Continuar, e Voltar --}}
+                                            {{-- Cenário 1: Assinar Modelo, Continuar, e Voltar --}}
                                             
-                                            {{-- Botão Abrir Modelo (com ícone document-text) --}}
+                                            {{-- Botão Assinar Modelo (com ícone document-text) --}}
                                             <button type="button"
                                                     wire:click="openModeloOnly({{ $currentId }})"
                                                     class="finalize-btn btn-same-size"> 
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="finalize-btn-icon icon-doc" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                                 </svg>
-                                                <span>Abrir Modelo</span>
+                                                <span>Assinar Modelo</span>
                                             </button>
 
                                             {{-- Botão Continuar (Tamanho fixo, ícone azul, estilo base-btn btn-ghost) --}}
@@ -599,7 +599,7 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                                         <svg class="icon-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                         </svg>
-                                        <span>Finalizar e Abrir Modelo</span>
+                                        <span>Finalizar e Assinar Modelo</span>
                                     </button>
                                      {{-- Botão Voltar para passos finais --}}
                                      @if(count($history) > 0)

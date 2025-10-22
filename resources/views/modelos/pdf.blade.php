@@ -249,6 +249,7 @@ Documento original assinado eletronicamente, conforme MP 2200-2/2001, art. 10, Â
                 href="{{ $verificationUrl ?? '#' }}"
                 target="_blank"
                 rel="noopener noreferrer"
+                style="word-break: break-all; color: #0b7dda; text-decoration: underline;"
             >
                 {{ $verificationUrl ?? 'https://e-docs.es.gov.br/d/2025-FZH3TS' }}
             </a>

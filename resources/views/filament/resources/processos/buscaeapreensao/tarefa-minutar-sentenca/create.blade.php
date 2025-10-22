@@ -112,7 +112,7 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
         .finalize-btn:focus { outline: none; box-shadow: 0 0 0 4px rgba(245,158,11,0.12); }
         .finalize-btn:hover { transform: translateY(-2px); }
 
-        /* larger icon specifically for Abrir Modelo / Finalizar e Abrir Modelo */
+        /* larger icon specifically for Assinar Modelo / Finalizar e Assinar Modelo */
         .finalize-btn svg,
         .finalize-btn .finalize-btn-icon,
         .base-btn .icon-doc {
@@ -379,7 +379,7 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                                         </div>
                                     @endif
 
-                                    {{-- se for passo com modelo (finalizar e abrir modelo) --}}
+                                    {{-- se for passo com modelo (finalizar e Assinar Modelo) --}}
                                     @if (!isset($currentStep['sim']) && !isset($currentStep['nao']) && isset($currentStep['modelo']))
                                         {{-- se for "modelo pessoa" usamos o finalize-btn com ícone maior, caso contrário também usamos para consistência --}}
                                         <button type="button"
@@ -390,7 +390,7 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                                             </svg>
                                             <span class="finalize-text">
                                                 <span class="small">Finalizar e</span>
-                                                <span class="muted">Abrir Modelo</span>
+                                                <span class="muted">Assinar Modelo</span>
                                             </span>
                                         </button>
                                     @elseif (!isset($currentStep['sim']) && !isset($currentStep['nao']) && !isset($currentStep['modelo']))

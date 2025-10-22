@@ -393,7 +393,7 @@
                                             </svg>
                                             <span class="finalize-text">
                                                 <span class="small">Finalizar e</span>
-                                                <span class="muted">Abrir Modelo</span>
+                                                <span class="muted">Assinar Modelo</span>
                                             </span>
                                         </button>
                                     @elseif (!isset($currentStep['sim']) && !isset($currentStep['nao']) && !isset($currentStep['modelo']))
