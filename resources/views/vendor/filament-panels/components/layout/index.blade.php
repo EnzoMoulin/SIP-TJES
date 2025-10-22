@@ -41,7 +41,7 @@
 
     /* 3. Topbar height */
     .fi-topbar nav {
-        height: 7rem !important;
+        height: 6rem !important;
         background-color: rgba(255, 255, 255, 0.85) !important;
         backdrop-filter: blur(6px);
     }
@@ -53,7 +53,6 @@
         backdrop-filter: blur(4px);
     }
 </style>
-
 
     <div
         class="fi-layout flex min-h-screen w-full flex-row-reverse overflow-x-clip"
