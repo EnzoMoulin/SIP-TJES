@@ -8,9 +8,12 @@
 <x-filament-panels::layout.base :livewire="$livewire">
 
 <style>
-    /* ✨ NEW: Set the main page background to light blue */
+    /* ✨ Background image for the entire page */
     body {
-        background-color: #f5f5f5ff !important; /* Light blue/indigo background */
+        background: url("{{ asset('images/backgroundTJES.png') }}") no-repeat center center fixed;
+        background-size: cover;
+        background-attachment: fixed;
+        background-color: #f5f5f5; /* fallback color */
     }
 
     /* 1. Sidebar Header (DARK gray) */
@@ -23,29 +26,34 @@
         stroke: currentColor !important;
     }
 
-    /* 2. Sidebar Body (Back to LIGHT gray) */
+    /* 2. Sidebar Body (light gray with some transparency for contrast) */
     .fi-sidebar {
-        background-color: #e6e6e6ff !important; /* gray-100 */
+        background-color: rgba(230, 230, 230, 0.85) !important;
+        backdrop-filter: blur(4px);
     }
     .fi-sidebar-nav {
-        color: #111827 !important; /* dark text */
+        color: #111827 !important;
     }
     .fi-sidebar-nav a:hover,
     .fi-sidebar-nav button:hover {
-        background-color: #e5e7eb !important; /* light gray hover */
+        background-color: rgba(229, 231, 235, 0.85) !important;
     }
 
     /* 3. Topbar height */
     .fi-topbar nav {
         height: 7rem !important;
+        background-color: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(6px);
     }
-    
-    /* 4. Dashboard Widgets (Set to white to stand out) */
+
+    /* 4. Dashboard Widgets (semi-transparent white to stand out) */
     .fi-section,
     .fi-stats-overview-widget-card {
-        background-color: #f3f4f6 !important;
+        background-color: rgba(243, 244, 246, 0.9) !important;
+        backdrop-filter: blur(4px);
     }
 </style>
+
 
     <div
         class="fi-layout flex min-h-screen w-full flex-row-reverse overflow-x-clip"
