@@ -427,10 +427,7 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
         <div class="bottom-panel"
              aria-hidden="false"
              x-data="{
-<<<<<<< HEAD
-=======
                 competencia: @entangle('competencia'),
->>>>>>> 58246f2 (Primeiro commit)
                 currentTime: '--:--',
                 sessionTime: '00:00:00',
 
@@ -580,9 +577,6 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
 
                         <div class="info-field" title="Competência">
                             <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M10 21v-6"></path><path d="M14 21v-6"></path><path d="M3 7h18"></path></svg>
-<<<<<<< HEAD
-                            <div><div class="label">Competência</div><div class="value">{{ ucfirst($competencia ?? 'Cível') }}</div></div>
-=======
                             <div>
                                 <div class="label">Competência</div>
 
@@ -591,7 +585,6 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                                     {{ isset($competencia) && $competencia ? (strtolower($competencia) === 'civel' ? 'Cível' : ucfirst($competencia)) : '' }}
                                 </div>
                             </div>
->>>>>>> 58246f2 (Primeiro commit)
                         </div>
 
                         <div class="info-field" title="Usuário">
@@ -606,12 +599,6 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                         <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"><path d="M3 7h18"></path><path d="M3 12h18"></path><path d="M3 17h18"></path></svg>
                         Selecionar Competência
                     </div>
-<<<<<<< HEAD
-                    <select wire:model="competencia" aria-label="Selecionar competência">
-                        <option value="cível" {{ (strtolower($competencia ?? '')=='cível' || strtolower($competencia ?? '')=='civel') ? 'selected' : '' }}>Cível</option>
-                        <option value="criminal" {{ (strtolower($competencia ?? '')=='criminal') ? 'selected' : '' }}>Criminal</option>
-                    </select>
-=======
 
                     <select x-model="competencia" wire:model="competencia" aria-label="Selecionar competência">
                         <option value="">Clique para selecionar</option>
@@ -619,7 +606,6 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                         <option value="criminal">Criminal</option>
                     </select>
 
->>>>>>> 58246f2 (Primeiro commit)
                     <div style="height:6px;"></div>
                     <div class="text-xs text-gray-500">Altere a competência quando necessário — a seleção será aplicada ao processo.</div>
                 </div>

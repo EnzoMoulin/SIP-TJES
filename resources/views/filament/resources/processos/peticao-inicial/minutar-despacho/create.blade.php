@@ -783,13 +783,6 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                           </div>
                       </div>
                       <div class="info-field" title="Competência">
-<<<<<<< HEAD
-                          <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M10 21v-6"></path><path d="M14 21v-6"></path><path d="M3 7h18"></path></svg>
-                          <div>
-                              <div class="label">Competência</div>
-                              <div class="value" x-text="competencia.charAt(0).toUpperCase() + competencia.slice(1)">{{ ucfirst($competencia ?? 'Cível') }}</div>
-                          </div>
-=======
                             <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M10 21v-6"></path><path d="M14 21v-6"></path><path d="M3 7h18"></path></svg>
                             <div>
                                 <div class="label">Competência</div>
@@ -799,7 +792,6 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
                                     {{ isset($competencia) && $competencia ? (strtolower($competencia) === 'civel' ? 'Cível' : ucfirst($competencia)) : '' }}
                                 </div>
                             </div>
->>>>>>> 58246f2 (Primeiro commit)
                       </div>
                       <div class="info-field" title="Usuário">
                           <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -812,18 +804,6 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
               </div>
 
               <div class="card competence">
-<<<<<<< HEAD
-                  <div class="label">
-                      <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"><path d="M3 7h18"></path><path d="M3 12h18"></path><path d="M3 17h18"></path></svg>
-                      Selecionar Competência
-                  </div>
-                  <select x-model="competencia" aria-label="Selecionar competência">
-                      <option value="cível">Cível</option>
-                      <option value="criminal">Criminal</option>
-                  </select>
-                  <div style="height:6px;"></div>
-                  <div class="text-xs text-gray-500">Altere a competência quando necessário — a seleção será aplicada ao processo.</div>
-=======
                     <div class="label">
                         <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"><path d="M3 7h18"></path><path d="M3 12h18"></path><path d="M3 17h18"></path></svg>
                         Selecionar Competência
@@ -837,7 +817,6 @@ $isModeloPessoaStep = isset($currentStep['modelo']) && in_array($questionNormali
 
                     <div style="height:6px;"></div>
                     <div class="text-xs text-gray-500">Altere a competência quando necessário — a seleção será aplicada ao processo.</div>
->>>>>>> 58246f2 (Primeiro commit)
               </div>
           </div>
       </div>
