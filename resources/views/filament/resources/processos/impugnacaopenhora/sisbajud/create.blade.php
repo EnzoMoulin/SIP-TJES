@@ -433,6 +433,10 @@
         <div class="bottom-panel"
              aria-hidden="false"
              x-data="{
+<<<<<<< HEAD
+=======
+                competencia: @entangle('competencia'),
+>>>>>>> 58246f2 (Primeiro commit)
                 currentTime: '--:--',
                 sessionTime: '00:00:00',
 
@@ -599,6 +603,7 @@
                         </div>
 
                         <div class="info-field" title="Competência">
+<<<<<<< HEAD
                             <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
                                 <path d="M10 21v-6"></path>
                                 <path d="M14 21v-6"></path>
@@ -607,6 +612,16 @@
                             <div>
                                 <div class="label">Competência</div>
                                 <div class="value">{{ ucfirst($competencia ?? 'Cível') }}</div>
+=======
+                            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><path d="M10 21v-6"></path><path d="M14 21v-6"></path><path d="M3 7h18"></path></svg>
+                            <div>
+                                <div class="label">Competência</div>
+
+                                <div class="value"
+                                    x-text="(competencia === 'civel') ? 'Cível' : (competencia === 'criminal' ? 'Criminal' : '')">
+                                    {{ isset($competencia) && $competencia ? (strtolower($competencia) === 'civel' ? 'Cível' : ucfirst($competencia)) : '' }}
+                                </div>
+>>>>>>> 58246f2 (Primeiro commit)
                             </div>
                         </div>
 
@@ -625,6 +640,7 @@
 
                 <div class="card competence">
                     <div class="label">
+<<<<<<< HEAD
                         <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
                             <path d="M3 7h18"></path>
                             <path d="M3 12h18"></path>
@@ -636,6 +652,16 @@
                     <select wire:model="competencia" aria-label="Selecionar competência">
                         <option value="cível" {{ (strtolower($competencia ?? '')=='cível' || strtolower($competencia ?? '')=='civel') ? 'selected' : '' }}>Cível</option>
                         <option value="criminal" {{ (strtolower($competencia ?? '')=='criminal') ? 'selected' : '' }}>Criminal</option>
+=======
+                        <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"><path d="M3 7h18"></path><path d="M3 12h18"></path><path d="M3 17h18"></path></svg>
+                        Selecionar Competência
+                    </div>
+
+                    <select x-model="competencia" wire:model="competencia" aria-label="Selecionar competência">
+                        <option value="">Clique para selecionar</option>
+                        <option value="civel">Cível</option>
+                        <option value="criminal">Criminal</option>
+>>>>>>> 58246f2 (Primeiro commit)
                     </select>
 
                     <div style="height:6px;"></div>

@@ -41,7 +41,11 @@
 
     /* 3. Topbar height */
     .fi-topbar nav {
+<<<<<<< HEAD
         height: 6rem !important;
+=======
+        height: 7rem !important;
+>>>>>>> 58246f2 (Primeiro commit)
         background-color: rgba(255, 255, 255, 0.85) !important;
         backdrop-filter: blur(6px);
     }
