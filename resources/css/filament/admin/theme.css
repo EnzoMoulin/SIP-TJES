@@ -88,3 +88,16 @@
     margin-top: 0px;
     width: 2000px; 
 }
+
+body:has(div.fi-simple-layout) {
+    background-color: transparent !important;
+}
+
+div.fi-simple-layout {
+    background-image: url('/public/images/backgroundTJES.png') !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    min-height: 100vh !important;
+}

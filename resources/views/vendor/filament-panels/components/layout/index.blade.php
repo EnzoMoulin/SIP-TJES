@@ -13,7 +13,7 @@
         background: url("{{ asset('images/backgroundTJES.png') }}") no-repeat center center fixed;
         background-size: cover;
         background-attachment: fixed;
-        background-color: #f5f5f5; /* fallback color */
+        background-color: #f5f5f5;
     }
 
     /* 1. Sidebar Header (DARK gray) */
